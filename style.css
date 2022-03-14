@@ -83,3 +83,20 @@ a:visited {
 .workout--cycling {
   border-left: 5px solid var(--color-brand--1);
 }
+
+.workout__title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  grid-column: 1 / -1;
+}
+
+.workout__details {
+  display: flex;
+  align-items: baseline;
+}
+
+.workout__icon {
+  font-size: 1.8rem;
+  margin-right: 0.2rem;
+  height: 0.28rem;
+}
