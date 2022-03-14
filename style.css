@@ -100,3 +100,15 @@ a:visited {
   margin-right: 0.2rem;
   height: 0.28rem;
 }
+
+.workout__value {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.workout__unit {
+  font-size: 1.1rem;
+  color: var(--color-light--1);
+  text-transform: uppercase;
+  font-weight: 800;
+}
