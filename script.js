@@ -114,6 +114,11 @@ class App {
   }
 
   _newWorkout(e) {
+    const validInputs = (...inputs) =>
+      inputs.every(inp => Number.isFinite(inp));
+
+    const allPositive = (...inputs) => inputs.every(inp => inp > 0);
+
     e.preventDefault();
 
     // Get data from form
@@ -122,13 +127,17 @@ class App {
     const duration = +inputDuration.value;
 
     if (type === 'running') {
-      // Check if data is valid
+      // Check if data is valid (only positive numbers are allowed)
       if (
-        !Number.isFinite(distance) ||
-        !Number.isFinite(duration) ||
-        !Number.isFinite(cadence)
+        // !Number.isFinite(distance) ||
+        // !Number.isFinite(duration) ||
+        // !Number.isFinite(cadence)
+        !validInputs(distance, duration, cadence) ||
+        !allPositive(distance, duration, cadence)
       )
         return alert('Inputs have to be positive numbers!');
+      // Creating the running workout
+      workout = new Running([lat, lng], distance, duration, cadence);
 
       const cadence = +inputCadence.value;
 
