@@ -31,10 +31,11 @@ if (navigator.geolocation)
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
-      L.marker(coords)
-        .addTo(map)
-        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-        .openPopup();
+      // Adding a marker on the page based on a click event handler
+      map.on('click', function (e) {
+        const { lat, lng } = e.latlng;
+        L.marker([lat, lng]).addTo(map).bindPopup('Workout.').openPopup();
+      });
     },
     // If we didn't successfully get the current position of the user we then display an error message
     function () {
