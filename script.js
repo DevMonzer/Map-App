@@ -21,8 +21,42 @@ class App {
   #mapEvent;
 
   constructor() {
-    // Automatically excute this method when a user opens the page
+    // Automatically excute these when a user opens the page
     this._getPosition();
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      inputDistance.value =
+        inputDuration.value =
+        inputCadence.value =
+        inputElevation.value =
+          '';
+
+      // Display Marker
+      console.log(mapEvent);
+      const { lat, lng } = mapEvent.latlng;
+      L.marker([lat, lng])
+        .addTo(map)
+        .bindPopup(
+          L.popup({
+            maxWidth: 250,
+            minWidth: 100,
+            autoClose: false,
+            closeOnClick: false,
+            className: `running-popup`,
+          })
+        )
+        .setPopupContent('Workout')
+        .openPopup();
+    });
+
+    inputType.addEventListener('change', function () {
+      inputElevation
+        .closest('.form__row')
+        .classList.toggle('form__row--hidden"');
+      inputCadence.closest('.form__row').classList.toggle('form__row--hidden"');
+    });
   }
 
   _getPosition() {
@@ -69,35 +103,3 @@ class App {
 }
 
 const app = new App();
-
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  inputDistance.value =
-    inputDuration.value =
-    inputCadence.value =
-    inputElevation.value =
-      '';
-
-  // Display Marker
-  console.log(mapEvent);
-  const { lat, lng } = mapEvent.latlng;
-  L.marker([lat, lng])
-    .addTo(map)
-    .bindPopup(
-      L.popup({
-        maxWidth: 250,
-        minWidth: 100,
-        autoClose: false,
-        closeOnClick: false,
-        className: `running-popup`,
-      })
-    )
-    .setPopupContent('Workout')
-    .openPopup();
-});
-
-inputType.addEventListener('change', function () {
-  inputElevation.closest('.form__row').classList.toggle('form__row--hidden"');
-  inputCadence.closest('.form__row').classList.toggle('form__row--hidden"');
-});
