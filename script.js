@@ -77,6 +77,7 @@ class App {
   _newWorkout(e) {
     e.preventDefault();
 
+    // Reset the form input fields
     inputDistance.value =
       inputDuration.value =
       inputCadence.value =
