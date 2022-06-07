@@ -51,6 +51,12 @@ if (navigator.geolocation)
 form.addEventListener('submit', function (e) {
   e.preventDefault();
 
+  inputDistance.value =
+    inputDuration.value =
+    inputCadence.value =
+    inputElevation.value =
+      '';
+
   // Display Marker
   console.log(mapEvent);
   const { lat, lng } = mapEvent.latlng;
