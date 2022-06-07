@@ -35,7 +35,7 @@ if (navigator.geolocation)
 
       map.on('click', function (mapEvent) {
         const { lat, lng } = mapEvent.latlng;
-        console.log(lat, lng);
+        // console.log(lat, lng);
 
         L.marker([lat, lng])
           .addTo(map)
@@ -46,8 +46,9 @@ if (navigator.geolocation)
               autoClose: false,
               closeOnClick: false,
               className: `running-popup`,
-            }).setPopupContent('Workout')
+            })
           )
+          .setPopupContent('Workout')
           .openPopup();
       });
     },
