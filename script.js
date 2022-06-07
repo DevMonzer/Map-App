@@ -14,7 +14,7 @@ const year = document.getElementById('year');
 
 year.innerHTML = new Date().getFullYear();
 
-let map;
+let map, mapEvent;
 
 // Getting the user's current location
 if (navigator.geolocation)
@@ -35,11 +35,12 @@ if (navigator.geolocation)
 
       // Adding a marker on the page based on a click event han
 
-      map.on('click', function (mapEvent) {
-        const { lat, lng } = mapEvent.latlng;
+      map.on('click', function (mapE) {
+        mapEvent = mapE;
+        const { lat, lng } = mapE.latlng;
         // console.log(lat, lng);
 
-        // To show a form on user click
+        // Handling clicks on the map
         form.classList.remove('hidden');
         inputDistance.focus();
       });
