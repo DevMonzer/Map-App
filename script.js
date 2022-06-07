@@ -14,6 +14,8 @@ const year = document.getElementById('year');
 
 class Workout {
   date = new Date();
+  id = (Date.now() + '').slice(-10);
+  clicks = 0;
 
   constructor(coords, distance, duration) {
     this.coords = coords; // [lat, lng]
