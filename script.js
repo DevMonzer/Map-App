@@ -16,37 +16,48 @@ year.innerHTML = new Date().getFullYear();
 
 let map, mapEvent;
 
-// Getting the user's current location
-if (navigator.geolocation)
-  navigator.geolocation.getCurrentPosition(
-    // If we successfully got the current position of the user we then display the location on the map using Leaflet library
-    function (position) {
-      const { latitude } = position.coords;
-      const { longitude } = position.coords;
+class App {
+  constructor() {}
 
-      const coords = [latitude, longitude];
-
-      map = L.map('map').setView(coords, 13);
-
-      L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      }).addTo(map);
-
-      // Adding a marker on the page based on a click event han
-
-      map.on('click', function (mapE) {
-        // Handling clicks on the map
-        mapEvent = mapE;
-        form.classList.remove('hidden');
-        inputDistance.focus();
+  _getPosition() {
+    // Getting the user's current location
+    if (navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(this._loadMap, function () {
+        // If we didn't successfully get the current position of the user we then display an error message
+        alert('Please allow this app to use your current location');
       });
-    },
-    // If we didn't successfully get the current position of the user we then display an error message
-    function () {
-      alert('Please allow this app to use your current location');
-    }
-  );
+  }
+
+  // If we successfully got the current position of the user we then display the location on the map using Leaflet library
+  _loadMap(position) {
+    const { latitude } = position.coords;
+    const { longitude } = position.coords;
+
+    const coords = [latitude, longitude];
+
+    map = L.map('map').setView(coords, 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+
+    // Adding a marker on the page based on a click event han
+
+    map.on('click', function (mapE) {
+      // Handling clicks on the map
+      mapEvent = mapE;
+      form.classList.remove('hidden');
+      inputDistance.focus();
+    });
+  }
+
+  _showForm() {}
+
+  _toggleElevationField() {}
+
+  _newWorkout() {}
+}
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -73,4 +84,9 @@ form.addEventListener('submit', function (e) {
     )
     .setPopupContent('Workout')
     .openPopup();
+});
+
+inputType.addEventListener('change', function () {
+  inputElevation.closest('.form__row').classList.toggle('form__row--hidden"');
+  inputCadence.closest('.form__row').classList.toggle('form__row--hidden"');
 });
