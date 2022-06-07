@@ -24,32 +24,7 @@ class App {
     // Automatically excute these when a user opens the page
     this._getPosition();
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      inputDistance.value =
-        inputDuration.value =
-        inputCadence.value =
-        inputElevation.value =
-          '';
-
-      // Display Marker
-      console.log(mapEvent);
-      const { lat, lng } = mapEvent.latlng;
-      L.marker([lat, lng])
-        .addTo(map)
-        .bindPopup(
-          L.popup({
-            maxWidth: 250,
-            minWidth: 100,
-            autoClose: false,
-            closeOnClick: false,
-            className: `running-popup`,
-          })
-        )
-        .setPopupContent('Workout')
-        .openPopup();
-    });
+    form.addEventListener('submit');
 
     inputType.addEventListener('change', function () {
       inputElevation
@@ -99,7 +74,32 @@ class App {
 
   _toggleElevationField() {}
 
-  _newWorkout() {}
+  _newWorkout(e) {
+    e.preventDefault();
+
+    inputDistance.value =
+      inputDuration.value =
+      inputCadence.value =
+      inputElevation.value =
+        '';
+
+    // Display Marker
+    console.log(mapEvent);
+    const { lat, lng } = mapEvent.latlng;
+    L.marker([lat, lng])
+      .addTo(map)
+      .bindPopup(
+        L.popup({
+          maxWidth: 250,
+          minWidth: 100,
+          autoClose: false,
+          closeOnClick: false,
+          className: `running-popup`,
+        })
+      )
+      .setPopupContent('Workout')
+      .openPopup();
+  }
 }
 
 const app = new App();
