@@ -40,20 +40,6 @@ if (navigator.geolocation)
         // To show a form on user click
         form.classList.remove('hidden');
         inputDistance.focus();
-
-        // L.marker([lat, lng])
-        //   .addTo(map)
-        //   .bindPopup(
-        //     L.popup({
-        //       maxWidth: 250,
-        //       minWidth: 100,
-        //       autoClose: false,
-        //       closeOnClick: false,
-        //       className: `running-popup`,
-        //     })
-        //   )
-        //   .setPopupContent('Workout')
-        //   .openPopup();
       });
     },
     // If we didn't successfully get the current position of the user we then display an error message
@@ -64,4 +50,17 @@ if (navigator.geolocation)
 
 form.addEventListener('submit', function () {
   // Display Marker
+  L.marker([lat, lng])
+    .addTo(map)
+    .bindPopup(
+      L.popup({
+        maxWidth: 250,
+        minWidth: 100,
+        autoClose: false,
+        closeOnClick: false,
+        className: `running-popup`,
+      })
+    )
+    .setPopupContent('Workout')
+    .openPopup();
 });
