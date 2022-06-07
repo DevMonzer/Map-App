@@ -24,14 +24,11 @@ class App {
     // Automatically excute these when a user opens the page
     this._getPosition();
 
+    // Handling clicks
     form.addEventListener('submit', this._newWorkout.bind(this));
 
-    inputType.addEventListener('change', function () {
-      inputElevation
-        .closest('.form__row')
-        .classList.toggle('form__row--hidden"');
-      inputCadence.closest('.form__row').classList.toggle('form__row--hidden"');
-    });
+    // Handling toggling between cycling and working out
+    inputType.addEventListener('change', this._toggleElevationField.bind(this));
   }
 
   _getPosition() {
@@ -72,7 +69,10 @@ class App {
     inputDistance.focus();
   }
 
-  _toggleElevationField() {}
+  _toggleElevationField() {
+    inputElevation.closest('.form__row').classList.toggle('form__row--hidden"');
+    inputCadence.closest('.form__row').classList.toggle('form__row--hidden"');
+  }
 
   _newWorkout(e) {
     e.preventDefault();
