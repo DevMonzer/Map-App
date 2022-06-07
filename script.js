@@ -36,11 +36,8 @@ if (navigator.geolocation)
       // Adding a marker on the page based on a click event han
 
       map.on('click', function (mapE) {
-        mapEvent = mapE;
-        const { lat, lng } = mapE.latlng;
-        // console.log(lat, lng);
-
         // Handling clicks on the map
+        mapEvent = mapE;
         form.classList.remove('hidden');
         inputDistance.focus();
       });
@@ -51,8 +48,12 @@ if (navigator.geolocation)
     }
   );
 
-form.addEventListener('submit', function () {
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
   // Display Marker
+  console.log(mapEvent);
+  const { lat, lng } = mapEvent.latlng;
   L.marker([lat, lng])
     .addTo(map)
     .bindPopup(
