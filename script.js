@@ -24,6 +24,7 @@ class Workout {
   }
 }
 
+// A class to handle running
 class Running extends Workout {
   constructor(coords, distance, duration, cadence) {
     super(coords, distance, duration);
@@ -31,6 +32,7 @@ class Running extends Workout {
   }
 }
 
+// A class to handle cycling
 class Cycling extends Workout {
   constructor(coords, distance, duration, elevationGain) {
     super(coords, distance, duration);
