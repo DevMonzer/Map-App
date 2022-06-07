@@ -34,7 +34,17 @@ if (navigator.geolocation)
       // Adding a marker on the page based on a click event handler
       map.on('click', function (e) {
         const { lat, lng } = e.latlng;
-        L.marker([lat, lng]).addTo(map).bindPopup('Workout.').openPopup();
+        L.marker([lat, lng])
+          .addTo(map)
+          .bindPopup(
+            L.popup({
+              maxWidth: 250,
+              minWidth: 100,
+              autoClose: false,
+              colseOnClick: false,
+            })
+          )
+          .openPopup();
       });
     },
     // If we didn't successfully get the current position of the user we then display an error message
