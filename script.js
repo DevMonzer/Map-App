@@ -12,9 +12,15 @@ const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 const year = document.getElementById('year');
 
-year.innerHTML = new Date().getFullYear();
+class Workout {
+  date = new Date();
 
-let map, mapEvent;
+  constructor(coords, distance, duration) {
+    this.coords = coords; // [lat, lng]
+    this.distance = distance; // in km
+    this.duration = duration; // in min
+  }
+}
 
 class App {
   #map;
@@ -28,7 +34,7 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
 
     // Handling toggling between cycling and working out
-    inputType.addEventListener('change', this._toggleElevationField.bind(this));
+    inputType.addEventListener('change', this._toggleElevationField);
   }
 
   _getPosition() {
@@ -57,8 +63,6 @@ class App {
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(this.#map);
 
-    // Adding a marker on the page based on a click event han
-
     // Handling clicks on the map
     this.#map.on('click', this._showForm.bind(this));
   }
@@ -84,7 +88,8 @@ class App {
       inputElevation.value =
         '';
 
-    // Display Marker
+    // Display a marker or adding a marker on the page based on a click event han
+
     const { lat, lng } = this.#mapEvent.latlng;
     L.marker([lat, lng])
       .addTo(this.#map)
@@ -103,3 +108,5 @@ class App {
 }
 
 const app = new App();
+
+year.innerHTML = new Date().getFullYear();
