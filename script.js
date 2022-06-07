@@ -143,6 +143,15 @@ class App {
 
       if (type === 'cycling') {
         const elevation = +inputElevation.value;
+
+        if (
+          !validInputs(distance, duration, elevation) ||
+          !allPositive(distance, duration)
+        )
+          return alert('Inputs have to be positive numbers!');
+
+        // Creating the cycling workout
+        workout = new Cycling([lat, lng], distance, duration, elevation);
       }
     }
 
