@@ -84,7 +84,7 @@ class App {
         '';
 
     // Display Marker
-    const { lat, lng } = this.mapEvent.latlng;
+    const { lat, lng } = this.#mapEvent.latlng;
     L.marker([lat, lng])
       .addTo(this.#map)
       .bindPopup(
