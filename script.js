@@ -24,7 +24,7 @@ class App {
     // Automatically excute these when a user opens the page
     this._getPosition();
 
-    form.addEventListener('submit');
+    form.addEventListener('submit', this._newWorkout.bind(this));
 
     inputType.addEventListener('change', function () {
       inputElevation
