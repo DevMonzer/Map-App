@@ -28,10 +28,13 @@ class App {
   _getPosition() {
     // Getting the user's current location
     if (navigator.geolocation)
-      navigator.geolocation.getCurrentPosition(this._loadMap, function () {
-        // If we didn't successfully get the current position of the user we then display an error message
-        alert('Please allow this app to use your current location');
-      });
+      navigator.geolocation.getCurrentPosition(
+        this._loadMap.bind(this),
+        function () {
+          // If we didn't successfully get the current position of the user we then display an error message
+          alert('Please allow this app to use your current location');
+        }
+      );
   }
 
   // If we successfully got the current position of the user we then display the location on the map using Leaflet library
