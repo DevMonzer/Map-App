@@ -14,8 +14,10 @@ const year = document.getElementById('year');
 
 year.innerHTML = new Date().getFullYear();
 
+// Getting the user's current location
 if (navigator.geolocation)
   navigator.geolocation.getCurrentPosition(
+    // If we successfully got the current position of the user we then display the location on the map using leaflet library
     function (position) {
       const { latitude } = position.coords;
       const { longitude } = position.coords;
@@ -34,7 +36,8 @@ if (navigator.geolocation)
         .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
         .openPopup();
     },
+    // If we didn't successfully get the current position of the user we then display an error message
     function () {
-      alert('Geolocation');
+      alert('Please allow this app to use your current location');
     }
   );
