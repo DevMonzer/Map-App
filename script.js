@@ -14,7 +14,7 @@ const year = document.getElementById('year');
 
 class Workout {
   date = new Date();
-  id = (Date.now() + '').slice(-10);
+  id = (Date.now() + '').slice(-10); // creating a unique id for each workout
   clicks = 0;
 
   constructor(coords, distance, duration) {
@@ -23,6 +23,10 @@ class Workout {
     this.duration = duration; // in min
   }
 }
+
+class Running extends Workout {}
+
+class Cycling extends Workout {}
 
 class App {
   #map;
@@ -35,7 +39,7 @@ class App {
     // Handling clicks
     form.addEventListener('submit', this._newWorkout.bind(this));
 
-    // Handling toggling between cycling and working out
+    // Handling toggling between cycling and running
     inputType.addEventListener('change', this._toggleElevationField);
   }
 
