@@ -62,15 +62,15 @@ class App {
 
     // Adding a marker on the page based on a click event han
 
-    this.#map.on('click', function (mapE) {
-      // Handling clicks on the map
-      this.#mapEvent = mapE;
-      form.classList.remove('hidden');
-      inputDistance.focus();
-    });
+    // Handling clicks on the map
+    this.#map.on('click', this._showForm.bind(this));
   }
 
-  _showForm() {}
+  _showForm(mapE) {
+    this.#mapEvent = mapE;
+    form.classList.remove('hidden');
+    inputDistance.focus();
+  }
 
   _toggleElevationField() {}
 
