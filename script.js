@@ -17,15 +17,24 @@ year.innerHTML = new Date().getFullYear();
 let map, mapEvent;
 
 class App {
-  constructor() {}
+  #map;
+  #mapEvent;
+
+  constructor() {
+    // Automatically excute this method when a user opens the page
+    this._getPosition();
+  }
 
   _getPosition() {
     // Getting the user's current location
     if (navigator.geolocation)
-      navigator.geolocation.getCurrentPosition(this._loadMap, function () {
-        // If we didn't successfully get the current position of the user we then display an error message
-        alert('Please allow this app to use your current location');
-      });
+      navigator.geolocation.getCurrentPosition(
+        this._loadMap.bind(this),
+        function () {
+          // If we didn't successfully get the current position of the user we then display an error message
+          alert('Please allow this app to use your current location');
+        }
+      );
   }
 
   // If we successfully got the current position of the user we then display the location on the map using Leaflet library
@@ -35,18 +44,18 @@ class App {
 
     const coords = [latitude, longitude];
 
-    map = L.map('map').setView(coords, 13);
+    this.#map = L.map('map').setView(coords, 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
+    }).addTo(this.#map);
 
     // Adding a marker on the page based on a click event han
 
-    map.on('click', function (mapE) {
+    this.#map.on('click', function (mapE) {
       // Handling clicks on the map
-      mapEvent = mapE;
+      this.#mapEvent = mapE;
       form.classList.remove('hidden');
       inputDistance.focus();
     });
