@@ -17,7 +17,7 @@ year.innerHTML = new Date().getFullYear();
 // Getting the user's current location
 if (navigator.geolocation)
   navigator.geolocation.getCurrentPosition(
-    // If we successfully got the current position of the user we then display the location on the map using leaflet library
+    // If we successfully got the current position of the user we then display the location on the map using Leaflet library
     function (position) {
       const { latitude } = position.coords;
       const { longitude } = position.coords;
