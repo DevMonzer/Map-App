@@ -59,6 +59,8 @@ class App {
   _newWorkout() {}
 }
 
+const app = new App();
+
 form.addEventListener('submit', function (e) {
   e.preventDefault();
 
