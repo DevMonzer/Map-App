@@ -84,10 +84,9 @@ class App {
         '';
 
     // Display Marker
-    console.log(mapEvent);
-    const { lat, lng } = mapEvent.latlng;
+    const { lat, lng } = this.mapEvent.latlng;
     L.marker([lat, lng])
-      .addTo(map)
+      .addTo(this.#map)
       .bindPopup(
         L.popup({
           maxWidth: 250,
