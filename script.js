@@ -14,6 +14,8 @@ const year = document.getElementById('year');
 
 year.innerHTML = new Date().getFullYear();
 
+let map;
+
 // Getting the user's current location
 if (navigator.geolocation)
   navigator.geolocation.getCurrentPosition(
@@ -24,7 +26,7 @@ if (navigator.geolocation)
 
       const coords = [latitude, longitude];
 
-      const map = L.map('map').setView(coords, 13);
+      map = L.map('map').setView(coords, 13);
 
       L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
         attribution:
