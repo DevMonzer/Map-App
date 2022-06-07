@@ -129,8 +129,11 @@ class App {
     const duration = +inputDuration.value;
     const { lat, lng } = this.#mapEvent.latlng;
 
+    // If workout running, create running object
     if (type === 'running') {
-      // Check if data is valid (only positive numbers are allowed)
+      const cadence = +inputCadence.value;
+
+      // Check if data is valid
       if (
         // !Number.isFinite(distance) ||
         // !Number.isFinite(duration) ||
@@ -139,24 +142,27 @@ class App {
         !allPositive(distance, duration, cadence)
       )
         return alert('Inputs have to be positive numbers!');
+
       // Creating the running workout
       workout = new Running([lat, lng], distance, duration, cadence);
-
-      const cadence = +inputCadence.value;
-
-      if (type === 'cycling') {
-        const elevation = +inputElevation.value;
-
-        if (
-          !validInputs(distance, duration, elevation) ||
-          !allPositive(distance, duration)
-        )
-          return alert('Inputs have to be positive numbers!');
-
-        // Creating the cycling workout
-        workout = new Cycling([lat, lng], distance, duration, elevation);
-      }
     }
+
+    // If workout cycling, create cycling object
+    if (type === 'cycling') {
+      const elevation = +inputElevation.value;
+
+      if (
+        !validInputs(distance, duration, elevation) ||
+        !allPositive(distance, duration)
+      )
+        return alert('Inputs have to be positive numbers!');
+
+      // Creating the cycling workout
+      workout = new Cycling([lat, lng], distance, duration, elevation);
+    }
+
+    // Add new object to workout array
+    this.#workouts.push(workout);
 
     // If workout running, create running object
 
