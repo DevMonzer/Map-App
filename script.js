@@ -31,9 +31,12 @@ if (navigator.geolocation)
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
-      // Adding a marker on the page based on a click event handler
-      map.on('click', function (e) {
-        const { lat, lng } = e.latlng;
+      // Adding a marker on the page based on a click event han
+
+      map.on('click', function (mapEvent) {
+        const { lat, lng } = mapEvent.latlng;
+        console.log(lat, lng);
+
         L.marker([lat, lng])
           .addTo(map)
           .bindPopup(
@@ -41,8 +44,9 @@ if (navigator.geolocation)
               maxWidth: 250,
               minWidth: 100,
               autoClose: false,
-              colseOnClick: false,
-            })
+              closeOnClick: false,
+              className: `running-popup`,
+            }).setPopupContent('Workout')
           )
           .openPopup();
       });
