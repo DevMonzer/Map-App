@@ -60,6 +60,8 @@ const year = document.getElementById('year');
 class App {
   #map;
   #mapEvent;
+  #mapZoomLevel = 13;
+  #workouts = [];
 
   constructor() {
     // Automatically excute these when a user opens the page
@@ -125,6 +127,7 @@ class App {
     const type = inputType.value;
     const distance = +inputDistance.value;
     const duration = +inputDuration.value;
+    const { lat, lng } = this.#mapEvent.latlng;
 
     if (type === 'running') {
       // Check if data is valid (only positive numbers are allowed)
@@ -163,7 +166,6 @@ class App {
 
     // Render workout on map as marker
 
-    const { lat, lng } = this.#mapEvent.latlng;
     L.marker([lat, lng])
       .addTo(this.#map)
       .bindPopup(
