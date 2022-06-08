@@ -34,6 +34,7 @@ body {
   display: flex;
 }
 
+/* Responsiveness */
 @media screen and (max-width: 770px) {
   body {
     padding: 0;
@@ -73,8 +74,6 @@ a:visited {
   }
 }
 
-/*************************************/
-
 .logo {
   height: 5.2rem;
   align-self: center;
@@ -104,6 +103,7 @@ a:visited {
   gap: 0.75rem 1.5rem;
 }
 
+/* Responsiveness */
 @media screen and (max-width: 650px) {
   .workout {
     padding: 1.5rem 1rem;
@@ -130,6 +130,7 @@ a:visited {
   grid-column: 1 / -1;
 }
 
+/* Responsiveness */
 @media screen and (max-width: 500px) {
   .workout__title {
     font-size: 1.3rem;
