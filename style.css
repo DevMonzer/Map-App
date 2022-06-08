@@ -34,6 +34,12 @@ body {
   display: flex;
 }
 
+@media screen and (max-width: 770px) {
+  body {
+    padding: 0;
+  }
+}
+
 /* GENERAL */
 a:link,
 a:visited {
