@@ -121,7 +121,7 @@ class App {
     // Handling clicks on the map
     this.#map.on('click', this._showForm.bind(this));
 
-    // Rendering the workouts on map from localStorage
+    // Rendering the workouts on map from localStorage and we do it here after the map laods
     this.#workouts.forEach(work => {
       this._renderWorkoutMarker(work);
     });
