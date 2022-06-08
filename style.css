@@ -28,7 +28,6 @@ body {
   height: 100vh;
   overscroll-behavior-y: none;
   width: 100%;
-
   background-color: #fff;
   padding: 2.5rem;
 
@@ -43,8 +42,6 @@ a:visited {
 
 /* SIDEBAR */
 .sidebar {
-  /* flex-basis: 50rem; */
-  width: 100%;
   background-color: var(--color-dark--1);
   padding: 3rem 5rem 4rem 5rem;
   display: flex;
