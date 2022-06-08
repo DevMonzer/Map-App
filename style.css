@@ -27,6 +27,7 @@ body {
   line-height: 1.6;
   height: 100vh;
   overscroll-behavior-y: none;
+  width: 100%;
 
   background-color: #fff;
   padding: 2.5rem;
@@ -42,12 +43,34 @@ a:visited {
 
 /* SIDEBAR */
 .sidebar {
-  flex-basis: 50rem;
+  /* flex-basis: 50rem; */
+  width: 100%;
   background-color: var(--color-dark--1);
   padding: 3rem 5rem 4rem 5rem;
   display: flex;
   flex-direction: column;
 }
+
+/* Responsiveness */
+@media screen and (max-width: 1100px) {
+  .sidebar {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .sidebar {
+    padding: 1rem 2.5rem;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .sidebar {
+    padding: 1rem 1rem;
+  }
+}
+
+/*************************************/
 
 .logo {
   height: 5.2rem;
@@ -77,6 +100,20 @@ a:visited {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 0.75rem 1.5rem;
 }
+
+@media screen and (max-width: 650px) {
+  .workout {
+    padding: 1.5rem 1rem;
+    gap: 0.75rem 0.5rem;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .workout {
+    grid-template-columns: 2fr 2fr;
+  }
+}
+
 .workout--running {
   border-left: 5px solid var(--color-brand--2);
 }
@@ -88,6 +125,12 @@ a:visited {
   font-size: 1.7rem;
   font-weight: 600;
   grid-column: 1 / -1;
+}
+
+@media screen and (max-width: 500px) {
+  .workout__title {
+    font-size: 1.3rem;
+  }
 }
 
 .workout__details {
@@ -111,6 +154,15 @@ a:visited {
   color: var(--color-light--1);
   text-transform: uppercase;
   font-weight: 800;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 770px) {
+  .workout__icon,
+  .workout__value,
+  .workout__unit {
+    font-size: 1rem;
+  }
 }
 
 .form {
@@ -178,17 +230,6 @@ a:visited {
   color: var(--color-light--1);
 }
 
-.twitter-link:link,
-.twitter-link:visited {
-  color: var(--color-light--1);
-  transition: all 0.2s;
-}
-
-.twitter-link:hover,
-.twitter-link:active {
-  color: var(--color-light--2);
-}
-
 /* MAP */
 #map {
   flex: 1;
@@ -227,4 +268,11 @@ a:visited {
   cursor: pointer;
   color: #fff;
   font-size: 18px;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 770px) {
+  .button {
+    font-size: 14px;
+  }
 }
