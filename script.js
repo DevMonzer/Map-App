@@ -79,6 +79,9 @@ class App {
     // Automatically excute this method when a user opens the page
     this._getPosition();
 
+    // Get data from local storage
+    this._getLocalStorage();
+
     // Handling clicks
     form.addEventListener('submit', this._newWorkout.bind(this));
 
@@ -117,6 +120,11 @@ class App {
 
     // Handling clicks on the map
     this.#map.on('click', this._showForm.bind(this));
+
+    // Rendering the workouts on map from localStorage
+    this.#workouts.forEach(work => {
+      this._renderWorkoutMarker(work);
+    });
   }
 
   _showForm(mapE) {
@@ -306,10 +314,12 @@ class App {
   _getLocalStorage() {
     const data = JSON.parse(localStorage.getItem('workouts'));
 
+    // If we have no data on localStorage return
     if (!data) return;
 
     this.#workouts = data;
 
+    // Rendering the workouts on board
     this.#workouts.forEach(work => {
       this._renderWorkout(work);
     });
