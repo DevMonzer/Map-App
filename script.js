@@ -278,23 +278,24 @@ class App {
     // BUGFIX: When we click on a workout before the map has loaded, we get an error. But there is an easy fix:
     if (!this.#map) return;
 
+    // Getting the workout id so based on that we move to its location
     const workoutEl = e.target.closest('.workout');
 
+    // A guard check so if we  don't have a workout so return
     if (!workoutEl) return;
 
+    // Matching the workout id yoo clicked on with the current one we have
     const workout = this.#workouts.find(
       work => work.id === workoutEl.dataset.id
     );
 
+    // Handling the move
     this.#map.setView(workout.coords, this.#mapZoomLevel, {
       animate: true,
       pan: {
         duration: 1,
       },
     });
-
-    // using the public interface
-    // workout.click();
   }
 }
 
