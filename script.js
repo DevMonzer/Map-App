@@ -67,7 +67,7 @@ const inputDistance = document.querySelector('.form__input--distance');
 const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
-const year = document.getElementById('year');
+const button = document.querySelector('.button');
 
 class App {
   #map;
@@ -90,6 +90,9 @@ class App {
 
     // Move to the workout position on the map
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
+
+    // Reseting the localStorage
+    button.addEventListener('click', this._reset);
   }
 
   _getPosition() {
@@ -324,8 +327,14 @@ class App {
       this._renderWorkout(work);
     });
   }
+
+  _reset() {
+    localStorage.removeItem('workouts');
+    location.reload();
+  }
 }
 
 const app = new App();
 
+const year = document.getElementById('year');
 year.innerHTML = new Date().getFullYear();
