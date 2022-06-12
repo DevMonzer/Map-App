@@ -1,9 +1,20 @@
 # Map-App
 Using a third party service to render a map to track your workouts 
 
-https://map-app-zeta.vercel.app/
+Map-App watch live -> https://map-app-zeta.vercel.app/
 
-The features implemented in this app:
+## What to do  
+1. Clone this repo     
+2. Run the code
+   
+## Technologies ⚙️  
+ 
+* HTML5   
+* CSS3 
+* JavaScript
+* Leaflet library
+
+# The features implemented in this app:
   -  As a user you can log your running workouts with location, distance, time, pace, and steps. 
   -  As a user you can log your cycling workouts with location, distance, time, speed, and elevation gain. 
   -  As a user you can see all your workouts at a glance so you can easily track your progress over time.
