@@ -97,7 +97,7 @@ class App {
 
   _getPosition() {
     // Getting the user's current location
-    if ('geolocation' in navigator)
+    if (navigator.geolocation)
       navigator.geolocation.getCurrentPosition(
         this._loadMap.bind(this),
         function () {
