@@ -3,6 +3,8 @@ Using a third party service to render a map to track your workouts
 
 Map-App watch live -> https://map-app-zeta.vercel.app/
 
+<a href="https://ibb.co/jDptStG"><img src="https://i.ibb.co/dDhZRZ6/mapty.jpg" alt="mapty" border="0"></a>
+
 ## What to do  
 1. Clone this repo     
 2. Run the code
